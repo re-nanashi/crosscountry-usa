@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/re-nanashi/crosscountry-usa#readme",
   "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.20.5",
+    "@babel/node": "^7.20.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/register": "^7.18.9",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.0"
   }
