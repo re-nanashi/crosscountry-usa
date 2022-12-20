@@ -1,43 +1,31 @@
-const GAME_CANVAS = document.getElementById("game-canvas");
+import { generateHTMLCode } from "./loading_model";
 
-export function runLoader() {
-  const loader = document.querySelector(".c-loader");
-  loader.classList.add("is--started");
-}
+const GAME_CANVAS = <HTMLDivElement>document.getElementById("game-canvas");
 
-/*
-function displayLoader(): void {
+function renderLoader(): void {
   const loader: HTMLDivElement = document.createElement("div");
+
   loader.classList.add("c-loader");
+  loader.innerHTML = generateHTMLCode();
 
-  loader.innerHTML = `
-		<div class="sk-cube-grid">
-		<div class="sk-cube sk-cube1"></div>
-		<div class="sk-cube sk-cube2"></div>
-		<div class="sk-cube sk-cube3"></div>
-		<div class="sk-cube sk-cube4"></div>
-		<div class="sk-cube sk-cube5"></div>
-		<div class="sk-cube sk-cube6"></div>
-		<div class="sk-cube sk-cube7"></div>
-		<div class="sk-cube sk-cube8"></div>
-		<div class="sk-cube sk-cube9"></div>
-	  </div>
-    `;
-
-  document.body.append(containerDiv);
+  GAME_CANVAS.append(loader);
 }
 
-export function runLoader_(): void {
-  displayLoader();
+function removeLoader(): void {
+  const loader: HTMLDivElement = document.querySelector(".c-loader");
 
-  setTimeout(removeLoader, 1400);
-
-  function removeLoader(): void {
-    const containerDiv: HTMLDivElement = document.querySelector(
-      "#container-loader-div"
-    );
-
-    document.body.removeChild(containerDiv);
+  if (!GAME_CANVAS.contains(loader)) {
+    return;
   }
+
+  GAME_CANVAS.removeChild(loader);
 }
-*/
+
+export function runLoader(): void {
+  renderLoader();
+
+  const loader: HTMLDivElement = document.querySelector(".c-loader");
+  loader.classList.add("is--started");
+
+  setTimeout(removeLoader, 4000);
+}
