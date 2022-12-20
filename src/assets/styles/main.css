@@ -10,6 +10,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url("../img/bg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
   height: 100vh;
   width: 100vw;
   margin: 0 auto;
@@ -20,10 +24,44 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url("../img/bg.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center center;
   height: 100%;
   width: 100%;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@media all and (max-width: 1000px) {
+  body:before {
+    content: "this webpage is best viewed...";
+    display: block;
+    position: fixed;
+    padding: 20px;
+    background: #fff;
+    border: 2px #ccc solid;
+    outline: 400px solid rgba(20, 20, 20, 0.7);
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media all and (max-height: 720px) {
+  body:before {
+    content: "this webpage is best viewed...";
+    display: block;
+    position: fixed;
+    padding: 20px;
+    background: #fff;
+    border: 2px #ccc solid;
+    outline: 400px solid rgba(20, 20, 20, 0.7);
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
 }
