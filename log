@@ -1,0 +1,256 @@
+
+> crosscountry-usa@1.0.0 dev
+> webpack --mode development
+
+assets by status 150 KiB [cached] 1 asset
+assets by status 10.6 KiB [compared for emit]
+  asset bundle.js 7.91 KiB [compared for emit] (name: main)
+  asset main.css 2.69 KiB [compared for emit] (name: main)
+asset index.html 14 KiB [emitted]
+Entrypoint main 10.6 KiB = main.css 2.69 KiB bundle.js 7.91 KiB
+runtime modules 937 bytes 4 modules
+cacheable modules 163 bytes (javascript) 2.69 KiB (css/mini-extract)
+  modules by path ./src/assets/styles/*.scss 50 bytes (javascript) 2.69 KiB (css/mini-extract)
+    ./src/assets/styles/loading.scss 50 bytes [built] [code generated]
+    css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/assets/styles/loading.scss 2.69 KiB [built] [code generated]
+  ./src/index.ts 74 bytes [built] [code generated]
+  ./src/assets/styles/main.css 39 bytes [built] [code generated] [1 error]
+
+ERROR in ./src/assets/styles/main.css
+Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):
+ModuleBuildError: Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.js):
+Error: Didn't get a result from child compiler
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/mini-css-extract-plugin/dist/loader.js:311:23
+    at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compiler.js:551:5)
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compiler.js:577:11
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compiler.js:1196:17
+    at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/tapable/lib/Hook.js:18:14)
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compiler.js:1192:33
+    at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compilation.js:2787:11)
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compilation.js:3092:11
+    at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at processResult (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/NormalModule.js:758:19)
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/NormalModule.js:860:5
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/loader-runner/lib/LoaderRunner.js:400:11
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/loader-runner/lib/LoaderRunner.js:195:20
+    at context.callback (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/loader-runner/lib/LoaderRunner.js:124:13)
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/mini-css-extract-plugin/dist/loader.js:311:14
+    at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compiler.js:551:5)
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compiler.js:577:11
+    at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/webpack/lib/Compiler.js:1196:17
+    at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)
+ @ ./src/index.ts 1:0-34
+
+ERROR in Error: Child compilation failed:
+  Module build failed (from ./node_modules/mini-css-extract-plugin/dist/loader.j  s):
+  ModuleBuildError: Module build failed (from ./node_modules/mini-css-extract-pl  ugin/dist/loader.js):
+  Error: Didn't get a result from child compiler
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  mini-css-extract-plugin/dist/loader.js:311:23
+      at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/Compiler.js:551:5)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:577:11
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:1196:17
+      at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10  ), <anonymous>:6:1)
+      at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/Hook.js:18:14)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:1192:33
+      at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/Compilation.js:2787:11)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compilation.js:3092:11
+      at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10  ), <anonymous>:6:1)
+      at processResult (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/NormalModule.js:758:19)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/NormalModule.js:860:5
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  loader-runner/lib/LoaderRunner.js:400:11
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  loader-runner/lib/LoaderRunner.js:195:20
+      at context.callback (/home/re-nanashi/Documents/Projects/game/crosscountry  -usa/node_modules/loader-runner/lib/LoaderRunner.js:124:13)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  mini-css-extract-plugin/dist/loader.js:311:14
+      at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/Compiler.js:551:5)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:577:11
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:1196:17
+      at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10  ), <anonymous>:6:1)
+  ModuleBuildError: Module build failed (from ./node_modules/mini-css-extract-pl  ugin/dist/loader.js):
+  ModuleBuildError: Module build failed (from ./node_modules/mini-css-extract-pl  ugin/dist/loader.js):
+  Error: Didn't get a result from child compiler
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  mini-css-extract-plugin/dist/loader.js:311:23
+      at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/Compiler.js:551:5)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:577:11
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:1196:17
+      at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10  ), <anonymous>:6:1)
+      at Hook.CALL_ASYNC_DELEGATE [as _callAsync] (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/Hook.js:18:14)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:1192:33
+      at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/Compilation.js:2787:11)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compilation.js:3092:11
+      at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10  ), <anonymous>:6:1)
+      at processResult (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/NormalModule.js:758:19)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/NormalModule.js:860:5
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  loader-runner/lib/LoaderRunner.js:400:11
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  loader-runner/lib/LoaderRunner.js:195:20
+      at context.callback (/home/re-nanashi/Documents/Projects/game/crosscountry  -usa/node_modules/loader-runner/lib/LoaderRunner.js:124:13)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  mini-css-extract-plugin/dist/loader.js:311:14
+      at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/Compiler.js:551:5)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:577:11
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:1196:17
+      at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10  ), <anonymous>:6:1)
+      at processResult (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/NormalModule.js:758:19)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/NormalModule.js:860:5
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  loader-runner/lib/LoaderRunner.js:400:11
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  loader-runner/lib/LoaderRunner.js:195:20
+      at context.callback (/home/re-nanashi/Documents/Projects/game/crosscountry  -usa/node_modules/loader-runner/lib/LoaderRunner.js:124:13)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  mini-css-extract-plugin/dist/loader.js:300:14
+      at finalCallback (/home/re-nanashi/Documents/Projects/game/crosscountry-us  a/node_modules/webpack/lib/Compiler.js:551:5)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:577:11
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compiler.js:1196:17
+      at Hook.eval [as callAsync] (eval at create (/home/re-nanashi/Documents/Pr  ojects/game/crosscountry-usa/node_modules/tapable/lib/HookCodeFactory.js:33:10  ), <anonymous>:6:1)
+  Cannot read properties of undefined (reading 'get')
+  during rendering of asset asset/resource|/home/re-nanashi/Documents/Projects/g  ame/crosscountry-usa/node_modules/mini-css-extract-plugin/dist/loader.js!/home  /re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/css-loader/d  ist/cjs.js!/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modu  les/postcss-loader/dist/cjs.js!/home/re-nanashi/Documents/Projects/game/crossc  ountry-usa/node_modules/sass-loader/dist/cjs.js!/home/re-nanashi/Documents/Pro  jects/game/crosscountry-usa/node_modules/mini-css-extract-plugin/dist/loader.j  s!/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/css-l  oader/dist/cjs.js!/home/re-nanashi/Documents/Projects/game/crosscountry-usa/sr  c/assets/styles/main.css
+  ChunkRenderError: Cannot read properties of undefined (reading 'get')
+  during rendering of asset asset/resource|/home/re-nanashi/Documents/Projects/g  ame/crosscountry-usa/node_modules/mini-css-extract-plugin/dist/loader.js!/home  /re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/css-loader/d  ist/cjs.js!/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modu  les/postcss-loader/dist/cjs.js!/home/re-nanashi/Documents/Projects/game/crossc  ountry-usa/node_modules/sass-loader/dist/cjs.js!/home/re-nanashi/Documents/Pro  jects/game/crosscountry-usa/node_modules/mini-css-extract-plugin/dist/loader.j  s!/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/css-l  oader/dist/cjs.js!/home/re-nanashi/Documents/Projects/game/crosscountry-usa/sr  c/assets/styles/main.css
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compilation.js:4549:23
+      at symbolIterator (/home/re-nanashi/Documents/Projects/game/crosscountry-u  sa/node_modules/neo-async/async.js:3482:9)
+      at timesSync (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/no  de_modules/neo-async/async.js:2297:7)
+      at Object.eachLimit (/home/re-nanashi/Documents/Projects/game/crosscountry  -usa/node_modules/neo-async/async.js:3463:5)
+      at Compilation.createChunkAssets (/home/re-nanashi/Documents/Projects/game  /crosscountry-usa/node_modules/webpack/lib/Compilation.js:4529:12)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compilation.js:3100:14
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compilation.js:3280:6
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  neo-async/async.js:2818:7
+      at done (/home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_mo  dules/neo-async/async.js:3522:9)
+      at /home/re-nanashi/Documents/Projects/game/crosscountry-usa/node_modules/  webpack/lib/Compilation.js:3243:8
+  
+  - loader.js:311 
+    [crosscountry-usa]/[mini-css-extract-plugin]/dist/loader.js:311:23
+  
+  - Compiler.js:551 finalCallback
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:551:5
+  
+  - Compiler.js:577 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:577:11
+  
+  - Compiler.js:1196 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:1196:17
+  
+  
+  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [crosscountry-usa]/[tapable]/lib/Hook.js:18:14
+  
+  - Compiler.js:1192 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:1192:33
+  
+  - Compilation.js:2787 finalCallback
+    [crosscountry-usa]/[webpack]/lib/Compilation.js:2787:11
+  
+  - Compilation.js:3092 
+    [crosscountry-usa]/[webpack]/lib/Compilation.js:3092:11
+  
+  
+  - NormalModule.js:758 processResult
+    [crosscountry-usa]/[webpack]/lib/NormalModule.js:758:19
+  
+  - NormalModule.js:860 
+    [crosscountry-usa]/[webpack]/lib/NormalModule.js:860:5
+  
+  - LoaderRunner.js:400 
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:400:11
+  
+  - LoaderRunner.js:195 
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:195:20
+  
+  - LoaderRunner.js:124 context.callback
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:124:13
+  
+  - loader.js:311 
+    [crosscountry-usa]/[mini-css-extract-plugin]/dist/loader.js:311:14
+  
+  - Compiler.js:551 finalCallback
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:551:5
+  
+  - Compiler.js:577 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:577:11
+  
+  - Compiler.js:1196 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:1196:17
+  
+  
+  - ModuleBuildError: Module build failed (from ./node_modules/mini-css-extract-    plugin/dist/loader.js):
+  
+  - ModuleBuildError: Module build failed (from ./node_modules/mini-css-extract-    plugin/dist/loader.js):
+  
+  - Error: Didn't get a result from child compiler
+  
+  - loader.js:311 
+    [crosscountry-usa]/[mini-css-extract-plugin]/dist/loader.js:311:23
+  
+  - Compiler.js:551 finalCallback
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:551:5
+  
+  - Compiler.js:577 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:577:11
+  
+  - Compiler.js:1196 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:1196:17
+  
+  
+  - Hook.js:18 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [crosscountry-usa]/[tapable]/lib/Hook.js:18:14
+  
+  - Compiler.js:1192 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:1192:33
+  
+  - Compilation.js:2787 finalCallback
+    [crosscountry-usa]/[webpack]/lib/Compilation.js:2787:11
+  
+  - Compilation.js:3092 
+    [crosscountry-usa]/[webpack]/lib/Compilation.js:3092:11
+  
+  
+  - NormalModule.js:758 processResult
+    [crosscountry-usa]/[webpack]/lib/NormalModule.js:758:19
+  
+  - NormalModule.js:860 
+    [crosscountry-usa]/[webpack]/lib/NormalModule.js:860:5
+  
+  - LoaderRunner.js:400 
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:400:11
+  
+  - LoaderRunner.js:195 
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:195:20
+  
+  - LoaderRunner.js:124 context.callback
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:124:13
+  
+  - loader.js:311 
+    [crosscountry-usa]/[mini-css-extract-plugin]/dist/loader.js:311:14
+  
+  - Compiler.js:551 finalCallback
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:551:5
+  
+  - Compiler.js:577 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:577:11
+  
+  - Compiler.js:1196 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:1196:17
+  
+  
+  - NormalModule.js:758 processResult
+    [crosscountry-usa]/[webpack]/lib/NormalModule.js:758:19
+  
+  - NormalModule.js:860 
+    [crosscountry-usa]/[webpack]/lib/NormalModule.js:860:5
+  
+  - LoaderRunner.js:400 
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:400:11
+  
+  - LoaderRunner.js:195 
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:195:20
+  
+  - LoaderRunner.js:124 context.callback
+    [crosscountry-usa]/[loader-runner]/lib/LoaderRunner.js:124:13
+  
+  - loader.js:300 
+    [crosscountry-usa]/[mini-css-extract-plugin]/dist/loader.js:300:14
+  
+  - Compiler.js:551 finalCallback
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:551:5
+  
+  - Compiler.js:577 
+    [crosscountry-usa]/[webpack]/lib/Compiler.js:577:11
+
+4 ERRORS in child compilations (Use 'stats.children: true' resp. '--stats-children' for more details)
+webpack 5.75.0 compiled with 6 errors in 1965 ms
