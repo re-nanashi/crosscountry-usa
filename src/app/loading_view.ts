@@ -2,7 +2,7 @@ import { generateHTMLCode } from "./loading_model";
 
 const GAME_CANVAS = <HTMLDivElement>document.getElementById("game-canvas");
 
-function renderLoader(): void {
+function displayLoader(): void {
   const loader: HTMLDivElement = document.createElement("div");
 
   loader.classList.add("c-loader");
@@ -21,8 +21,8 @@ function removeLoader(): void {
   GAME_CANVAS.removeChild(loader);
 }
 
-export function runLoader(): void {
-  renderLoader();
+export function renderLoadingScreen(): void {
+  displayLoader();
 
   const loader: HTMLDivElement = document.querySelector(".c-loader");
   loader.classList.add("is--started");
