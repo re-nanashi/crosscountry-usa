@@ -1,5 +1,6 @@
 import "./assets/styles/main.css";
 import "./assets/styles/loading.scss";
+import "nes.css/css/nes.min.css";
 
 import { renderLoadingScreen } from "./app/loading_view";
 import { renderWarningModal } from "./app/warning_view";
@@ -18,7 +19,7 @@ class GameState {
   private state: State;
 
   constructor() {
-    //initial state
+    //initial/default state
     this.state = State.LOADING;
   }
 
@@ -35,6 +36,7 @@ class GameState {
 class GameView {
   readonly MIN_WIDTH: number = 1080;
   readonly MIN_HEIGHT: number = 720;
+  private GAME_CANVAS = <HTMLDivElement>document.getElementById("game-canvas");
 
   constructor() {
     this.inspectScreenResolution();
@@ -43,24 +45,29 @@ class GameView {
   private handleResolutionChangeEvent(e: any): void {
     // if class render(warning) then renderWarningModal
     if (e.matches) {
-      console.log("Show Modal");
+      console.log("Show modal");
     } else {
-      console.log("Remove modal");
+      console.log("remove modal");
     }
   }
 
+  // TODO check on the start of game if resolution requirements are met.
   private inspectScreenResolution() {
-    let width = window.matchMedia(`(max-width: ${this.MIN_WIDTH}px)`);
-    let height = window.matchMedia(`(max-height: ${this.MIN_HEIGHT}px)`);
+    let isModalShown: Boolean = false;
+    let minHxW = window.matchMedia(
+      `(max-width: ${this.MIN_WIDTH}px) and (max-height: ${this.MIN_HEIGHT}px)`
+    );
 
-    width.addEventListener("change", this.handleResolutionChangeEvent);
-    height.addEventListener("change", this.handleResolutionChangeEvent);
+    minHxW.addEventListener("change", this.handleResolutionChangeEvent);
   }
 
   render(stateToRender: State) {
     switch (stateToRender) {
       case State.LOADING:
         renderLoadingScreen();
+        break;
+      case State.WARNING:
+        renderWarningModal();
         break;
     }
   }
@@ -76,8 +83,13 @@ class Game {
   }
 
   start() {
-    const currentState = this.context.getCurrentState();
+    let currentState = this.context.getCurrentState();
     this.display.render(currentState);
+    this.context.setNewState(State.WARNING);
+    currentState = this.context.getCurrentState();
+    setTimeout(() => {
+      this.display.render(currentState);
+    }, 4200);
   }
 }
 

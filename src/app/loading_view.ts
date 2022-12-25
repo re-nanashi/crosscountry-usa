@@ -27,5 +27,5 @@ export function renderLoadingScreen(): void {
   const loader: HTMLDivElement = document.querySelector(".c-loader");
   loader.classList.add("is--started");
 
-  //setTimeout(removeLoader, 4000);
+  setTimeout(removeLoader, 4000);
 }

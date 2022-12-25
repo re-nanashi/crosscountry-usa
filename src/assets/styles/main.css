@@ -1,9 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 * {
-  margin: 0px;
-  padding: 0px;
   box-sizing: border-box;
   font-family: "Press Start 2P", cursive;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -26,42 +26,18 @@ body {
   align-items: center;
   height: 100%;
   width: 100%;
+  margin: auto;
 }
 
-.hidden {
-  visibility: hidden;
+.is-centered {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  text-align: center;
 }
 
-@media all and (max-width: 1000px) {
-  body:before {
-    content: "this webpage is best viewed...";
-    display: block;
-    position: fixed;
-    padding: 20px;
-    background: #fff;
-    border: 2px #ccc solid;
-    outline: 400px solid rgba(20, 20, 20, 0.7);
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
-}
-
-@media all and (max-height: 720px) {
-  body:before {
-    content: "this webpage is best viewed...";
-    display: block;
-    position: fixed;
-    padding: 20px;
-    background: #fff;
-    border: 2px #ccc solid;
-    outline: 400px solid rgba(20, 20, 20, 0.7);
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-  }
+.nes-text.is-warning {
+  color: #f7d51d;
+  font-size: larger;
+  margin-bottom: 20px;
 }

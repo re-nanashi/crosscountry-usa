@@ -58,7 +58,7 @@ $duration: 3s;
   height: 12px;
   display: block;
   position: absolute;
-  top: 5px;
+  top: 8px;
   left: 10px;
   right: 11px;
   transform: scaleX(0);
@@ -79,7 +79,7 @@ $duration: 3s;
 .c-loader__progress-helper--left {
   opacity: 0;
   left: 7px;
-  top: 9px;
+  top: 12px;
 
   .is--started & {
     opacity: 1;
@@ -89,7 +89,7 @@ $duration: 3s;
 .c-loader__progress-helper--right {
   opacity: 0;
   right: 7px;
-  top: 9px;
+  top: 12px;
 
   .is--started & {
     animation: loaderHelperRight $duration step-end $fillMode;
