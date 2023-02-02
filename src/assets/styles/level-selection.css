@@ -1,0 +1,69 @@
+/* GAME CONTENT */
+#frame-container #game-content-container {
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(0);
+}
+
+/* LEVEL SELECT TEXT */
+#game-content-container .level-select-text-container {
+  height: 28%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.level-select-text-container .level-select-text-placeholder {
+  background-image: url("../img/select_level_text.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 60%;
+  width: 40%;
+}
+
+/* LEVEL LIST */
+#game-content-container .levels-container {
+  height: 45%;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  gap: 13%;
+}
+
+#level-1,
+#level-2,
+#level-3 {
+  width: 23.34%;
+  font-size: 0.8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10%;
+}
+
+.level-star-img-placeholder {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 40%;
+  height: 0;
+}
+
+.levels-container > a:nth-child(1) > div {
+  background-image: url("../img/level-1.png");
+  padding-top: 104.39%;
+}
+
+.levels-container > a:nth-child(2) > div {
+  background-image: url("../img/level-2.png");
+  width: 80%;
+  padding-top: 104.39%;
+}
+
+.levels-container > a:nth-child(3) > div {
+  background-image: url("../img/level-3.png");
+  width: 80%;
+  padding-top: 104.39%;
+}

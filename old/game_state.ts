@@ -1,21 +1,22 @@
-enum State {
+export enum State {
+  BUFFER,
+  WARNING_AUDIO,
+  WARNING_RES,
   LOADING,
-  WARNING,
-  GAME_INTRO,
+  GAME_MENU,
   LEVEL_SELECT,
   IN_GAME,
   HINT,
+  END,
 }
 
-class GameState {
+//GameState
+export class GameState {
   private state: State;
-  private level: number = 1;
-  private score: number = 0;
-  private timeRemaining: number;
 
   constructor() {
-    // default/initial game state
-    this.state = State.LOADING;
+    //initial/default state
+    this.state = State.BUFFER;
   }
 
   getCurrentState(): State {

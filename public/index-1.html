@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrossCountry: USA</title>
+    <link rel="stylesheet" href="/rework/main.css" />
+    <link
+      href="https://unpkg.com/nes.css@latest/css/nes.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="canvas">
+      <!-- ANIMATED BACKGROUND DIV -->
+      <div class="background-container"></div>
+      <!-- ANIMATED BACKGROUND DIV END -->
+      <section id="frame-container">
+        <!-- START CODING FRAME HERE -->
+        <!-- Game Header -->
+        <section id="game-header-container">
+          <!-- return button -->
+          <div class="return-btn-area">
+            <div id="return-btn" class="return-btn-placeholder"></div>
+          </div>
+          <!-- mini logo -->
+          <div class="mini-logo-area">
+            <div class="mini-logo-placeholder"></div>
+          </div>
+          <!-- level indicator -->
+          <div class="level-indicator-area">
+            Level
+            <div class="level-star-img-placeholder"></div>
+          </div>
+          <!-- timer -->
+          <div class="timer-area">
+            <div class="timer-icon-container">
+              <div class="timer-icon-placeholder"></div>
+            </div>
+            <div class="progress-container">
+              <progress
+                class="nes-progress is-custom"
+                value="100"
+                max="100"
+              ></progress>
+            </div>
+          </div>
+        </section>
+        <!-- Game Content -->
+        <div id="game-content-container">
+          <!-- crossword table -->
+          <section id="crossword-container">
+            <div id="table-container">
+              <div id="_cont">
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+                <div class="cell"></div>
+              </div>
+            </div>
+            <div id="input-container">
+              <!-- default number is the first question -->
+              <div id="cell-number">5</div>
+              <input
+                oninput="this.value = this.value.toUpperCase()"
+                type="text"
+                id="guess-text"
+                class="nes-input"
+              />
+              <a id="enter-btn" class="nes-btn nes-btn-custom" type="button"
+                >Enter</a
+              >
+            </div>
+          </section>
+          <!-- crossword questions -->
+          <section id="questions-container">
+            <div
+              class="across-questions-container nes-container is-rounded with-title"
+            >
+              <p class="title">Across</p>
+              <!-- ADD ACROSS QUESTIONS HERE-->
+              <!-- ADD "active" if question card is the selected one -->
+
+              <div
+                class="nes-container with-title is-centered question-card active"
+              >
+                <p class="title">5</p>
+                <p>The highest mountain top in the USA</p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">6</p>
+                <p>This man's name was given to the capital of the USA</p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">9</p>
+                <p>A neighboring country of the USA</p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">10</p>
+                <p>
+                  A significant percentage of this natural phenomenon occurs in
+                  the USA
+                </p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+              <!-- END ADDING ACROSS QUESTIONS HERE -->
+            </div>
+            <div
+              class="down-questions-container nes-container is-rounded with-title"
+            >
+              <p class="title">Down</p>
+              <!-- ADD DOWN QUESTIONS HERE-->
+
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">1</p>
+                <p>The largest state(area) in the USA</p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+
+              <!-- if cleared, add "cleared" to styling -->
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">2</p>
+                <p>The number of stars on the US flag</p>
+                <!-- if cleared, add "is-disabled" to styling -->
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+                <!-- if cleared, add indicator html code -->
+              </div>
+
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">3</p>
+                <p>The oldest national park in the world</p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">4</p>
+                <p>The national bird of the USA</p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">7</p>
+                <p>The most famous waterfall in North America</p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+
+              <div class="nes-container with-title is-centered question-card">
+                <p class="title">8</p>
+                <p>Third most populated city in the USA</p>
+                <a class="nes-btn nes-btn-custom" type="button">Hint</a>
+              </div>
+              <!-- END ADDING DOWN QUESTIONS HERE -->
+            </div>
+          </section>
+        </div>
+        <!-- END CODING FRAME HERE -->
+      </section>
+    </div>
+  </body>
+  <script src="globals.js"></script>
+  <script src="functions.js"></script>
+  <script src="eventListeners.js"></script>
+</html>

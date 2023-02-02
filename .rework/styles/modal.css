@@ -1,0 +1,61 @@
+.modal {
+  position: absolute;
+  width: 70%;
+  margin: auto;
+  animation: mslideUp 0.2s ease-out, fadeIn 0.2s;
+}
+
+/* Move it (define the animation) */
+@keyframes mslideUp {
+  0% {
+    transform: translateY(30%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.nes-btn-custom {
+  color: #fff !important;
+  background-color: #eb1e81 !important;
+}
+
+.nes-btn-custom:hover {
+  color: #fff !important;
+  text-decoration: none !important;
+  background-color: #d41b74 !important;
+}
+
+.nes-btn-custom:hover:after {
+  box-shadow: inset -6px -6px #9c0e42 !important;
+}
+
+.nes-btn-custom::after {
+  box-shadow: inset -4px -4px #9c0e42 !important;
+}
+
+.nes-btn-custom:focus {
+  box-shadow: 0 0 0 6px rgba(173, 175, 188, 0.3) !important;
+}
+
+.nes-btn-custom:active:not(.is-disabled)::after {
+  /* same color with after */
+  box-shadow: inset 4px 4px #9c0e42 !important;
+}

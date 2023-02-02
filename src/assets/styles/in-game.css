@@ -1,0 +1,282 @@
+/* FRAME */
+/* LEVEL INDICATOR */
+#game-header-container .level-indicator-area {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2vw;
+  align-items: center;
+  animation: slidedown 1s ease-out;
+}
+
+.level-indicator-area .level-star-img-placeholder {
+  /* Change img for level indication */
+  background-image: url("../img/level-1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 25%;
+  height: 0;
+  padding-top: 13%;
+}
+
+/* TIMER */
+#game-header-container .timer-area {
+  width: 54%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  padding-left: 10%;
+  animation: slidedown 1s ease-out;
+}
+
+.timer-area .timer-icon-container {
+  width: 10%;
+}
+
+.timer-icon-container .timer-icon-placeholder {
+  background-image: url("../img/timer-ico.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 90%;
+  height: 0;
+  padding-top: 130%;
+}
+
+.timer-area .progress-container {
+  width: 80%;
+  height: 40%;
+  padding-left: 3%;
+  margin-top: 3.6%;
+}
+
+/* GAME CONTENT */
+#frame-container div#game-content-container-ig {
+  width: 100%;
+  height: 88%;
+  display: flex;
+  flex-direction: row;
+  padding: 1% 2% 2% 2%;
+}
+
+/* CROSSWORD TABLE*/
+#crossword-container {
+  width: 57.7%;
+  height: auto;
+  padding-right: 2%;
+  display: flex;
+  flex-direction: column;
+  gap: 2%;
+}
+
+#crossword-container #table-container {
+  width: auto;
+  height: 88%;
+  display: flex;
+  justify-content: center;
+}
+
+#table-container #_cont {
+  position: relative;
+  aspect-ratio: 1/1;
+  height: 100%;
+}
+
+#_cont .cell {
+  height: 6.25%;
+  width: 6.25%;
+  clip-path: inset(0.1vw 0.1vw 0.1vw 0.1vw);
+  background-color: #fff;
+  float: left;
+}
+
+#_cont .block {
+  width: calc(6.25% - 0.1vw - 0.1vw);
+  height: calc(6.25% - 0.1vw - 0.1vw);
+  background-color: #fff;
+  position: absolute;
+  left: 0.1vw;
+  top: 0.1vw;
+  text-align: center;
+  line-height: calc(6.25% - 0.1vw - 0.1vw);
+  font-weight: bold;
+  font-size: 1vw;
+  color: #000;
+  border: 0.2em solid;
+}
+
+.block > span:nth-of-type(1) {
+  position: absolute;
+  top: 55%;
+  right: 18%;
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.block > span:nth-of-type(2) {
+  position: absolute;
+  top: 21%;
+  left: 3%;
+  font-size: 0.7vw;
+  font-family: arial;
+}
+
+/* TEXT INPUT */
+#crossword-container #input-container {
+  width: 75%;
+  height: 10%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2%;
+}
+
+#input-container > div.nes-container {
+  height: 94% !important;
+  padding: 0.5% 1% !important;
+  background-color: #fff;
+}
+
+#input-container #cell-number {
+  width: 10%;
+  height: 100%;
+  font-size: 1.5vw;
+  color: #fff;
+  align-content: center;
+  text-align: center;
+  padding-top: 2.5%;
+}
+
+#input-container #guess-text.nes-input {
+  width: 90% !important;
+  height: 60% !important;
+  padding: 0.3% 0.3% 0.3% 0.3%;
+  font-size: 1vw;
+  text-align: center;
+}
+
+#input-container #guess-text.nes-input:focus {
+  outline: none;
+}
+
+#input-container > a.nes-btn {
+  font-size: 0.8vw !important;
+  padding: 0.5%;
+}
+
+/* CROSSWORD QUESTIONS */
+#questions-container {
+  width: 42.3%;
+  height: auto;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+#questions-container .across-questions-container,
+#questions-container .down-questions-container {
+  background-color: #fff;
+  margin-bottom: 5% !important;
+}
+
+/* QUESTION CARD STYLING */
+.across-questions-container.nes-container.with-title > p.title,
+.down-questions-container.nes-container.with-title > p.title {
+  font-size: 1.2vw !important;
+}
+
+.nes-container .question-card {
+  margin-bottom: 4%;
+  cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAzElEQVRYR+2X0Q6AIAhF5f8/2jYXZkwEjNSVvVUjDpcrGgT7FUkI2D9xRfQETwNIiWO85wfINfQUEyxBG2ArsLwC0jioGt5zFcwF4OYDPi/mBYKm4t0U8ATgRm3ThFoAqkhNgWkA0jJLvaOVSs7j3qMnSgXWBMiWPXe94QqMBMBc1VZIvaTu5u5pQewq0EqNZvIEMCmxAawK0DNkay9QmfFNAJUXfgGgUkLaE7j/h8fnASkxHTz0DGIBMCnBeeM7AArpUd3mz2x3C7wADglA8BcWMZhZAAAAAElFTkSuQmCC)
+      14 0,
+    pointer;
+}
+
+.nes-container .question-card > p {
+  font-size: 1vw !important;
+  pointer-events: none;
+}
+
+.nes-container .question-card > a.nes-btn-custom {
+  font-size: 0.8vw !important;
+}
+
+/* when active */
+.nes-container .question-card.active {
+  background-color: #fec8c6;
+  transition: 0.2s ease-in;
+}
+
+.nes-container .question-card.active > p:nth-of-type(2) {
+  color: #330c61;
+}
+
+/* CLEARED CARD */
+.nes-container.question-card.cleared {
+  position: relative;
+  cursor: not-allowed;
+}
+
+.nes-container.question-card.cleared:active {
+  animation: shake 0.5s;
+}
+
+.nes-container.question-card.cleared > p:nth-of-type(2) {
+  filter: brightness(1);
+}
+.nes-container.question-card.cleared > div.cleared-indicator-area {
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  right: 4%;
+  bottom: 32%;
+}
+
+.nes-container.question-card.cleared
+  > div.cleared-indicator-area
+  .cleared-img-placeholder {
+  background-image: url("../img/cleared.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}

@@ -1,0 +1,71 @@
+/* LOGOS */
+#frame-container .logo-container {
+  width: 100%;
+  height: 70%;
+  padding-top: 9%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform: scale(0);
+}
+
+.logo-container .tp-logo-placeholder {
+  background-image: url("../img/tp-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 5%;
+  height: 15%;
+}
+
+.logo-container .game-logo-placeholder {
+  background-image: url("../img/game-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 60%;
+  height: 50%;
+}
+
+@keyframes animateExitLogo {
+  0% {
+    padding-top: 21.5%;
+  }
+  25% {
+    padding-top: 34%;
+  }
+  50% {
+    padding-top: 46.5%;
+  }
+
+  75% {
+    padding-top: 59.5%;
+  }
+  100% {
+    padding-top: 80%;
+  }
+}
+
+/* PLAY BUTTON */
+#frame-container .play-btn-container {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.play-btn-container #play-btn {
+  margin-bottom: 1.2%;
+  padding: 0.4% 3% 0.4% 3%;
+  font-size: 1.2vw;
+}
+
+.play-btn-container .play-text-hint {
+  text-align: center;
+}
+
+.play-btn-container .play-text-hint > p {
+  font-size: 1vw;
+  color: white;
+  margin-bottom: 3%;
+}
