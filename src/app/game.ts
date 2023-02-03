@@ -1,20 +1,23 @@
-import { FRAME } from "../globals";
+import { InGameView } from "./gameScreen";
+import { CrosswordLogic } from "./crosswordLogic";
+import { GameState } from "./state";
 
 export class Game {
-  private _headerContElement: HTMLElement;
-  private _gameContElement: HTMLElement;
-  private _container: HTMLElement;
-  private _cells: Array<any>;
-  private _timer: any;
-
-  private _selectedQuestionNumber: Number;
+  private _state: GameState;
+  private _selectedQuestionNumber: number;
   private _solved: Array<Number>;
   private _data: any;
   private _wordsToSolve: Array<string>;
 
-  constructor() {
-    this._gameContElement = document.createElement("div");
+  private _inGameView: InGameView;
+  private _crosswordLogic: CrosswordLogic;
 
+  private _cont: HTMLElement;
+  private _cells: Array<any>;
+  private _timer: HTMLProgressElement;
+  private _timerInterval: any;
+
+  constructor() {
     this._selectedQuestionNumber = 5;
     this._solved = [];
     this._data = [];
@@ -30,47 +33,9 @@ export class Game {
       "MEXICO",
       "TORNADO",
     ];
-  }
 
-  private coordinatesToCellNumber(x: any, y: any) {
-    return (y / 6.25) * 16 + x / 6.25;
-  }
-
-  private cellNumberToX(cellNumber: any) {
-    return (cellNumber % 16) * 6.25;
-  }
-
-  private cellNumberToY(cellNumber: any) {
-    return Math.trunc(cellNumber / 16) * 6.25;
-  }
-
-  private marginLeft(block: any) {
-    return Number(block.style.marginLeft.split("%")[0]);
-  }
-
-  private marginTop(block: any) {
-    return Number(block.style.marginTop.split("%")[0]);
-  }
-
-  private invertDirection(direction: string) {
-    return direction == "horizontal" ? "vertical" : "horizontal";
-  }
-
-  private blocks() {
-    return document.querySelectorAll(".block");
-  }
-
-  private getBlocksAtCellNumber(cellNumber: Number): any[] {
-    let blocksFound: any[] = [];
-    blocks().forEach((block) => {
-      if (
-        marginLeft(block) == cellNumberToX(cellNumber) &&
-        marginTop(block) == cellNumberToY(cellNumber)
-      ) {
-        blocksFound.push(block);
-      }
-    });
-    return blocksFound;
+    this._inGameView = new InGameView();
+    this._crosswordLogic = new CrosswordLogic();
   }
 
   private placeWord(
@@ -82,7 +47,10 @@ export class Game {
   ) {
     let html = "";
     let occupiedCells = [];
-    let cellNumber = coordinatesToCellNumber(xCoordinate, yCoordinate);
+    let cellNumber = this._crosswordLogic.coordinatesToCellNumber(
+      xCoordinate,
+      yCoordinate
+    );
 
     for (let i = 0; i < word.length; i++) {
       occupiedCells.push(
@@ -106,195 +74,246 @@ export class Game {
       }
     }
 
-    container.insertAdjacentHTML("beforeend", html);
+    this._cont.insertAdjacentHTML("beforeend", html);
 
-    data.push({ qnum: number, occupied: occupiedCells });
+    this._data.push({ qnum: number, occupied: occupiedCells });
 
     return occupiedCells;
   }
 
-  private drawRestOfHeaderArea(): void {
-    this._headerContElement = document.querySelector("#game-header-container");
+  private bindQuestionCardEvents(): void {
+    let questionCards = document.querySelectorAll(".question-card");
+    let everyCardIsSolved = true;
 
-    let levelIndicatorArea = document.createElement("div");
-    let timerArea = document.createElement("div");
+    // check if puzzle is solved
+    questionCards.forEach((card) => {
+      everyCardIsSolved =
+        everyCardIsSolved &&
+        this._solved.includes(Number(card.querySelector(".title").textContent));
+    });
 
-    levelIndicatorArea.classList.add("level-indicator-area");
-    timerArea.classList.add("timer-area");
+    if (everyCardIsSolved) {
+      // TODO create you have won notification
+      console.log("was not skipped");
+      this._state.updateLevelsCleared(this._state.getChosenLevel());
+      return;
+    }
+    console.log("was skipped");
 
-    levelIndicatorArea.innerHTML = `
-      Level
-      <div class="level-star-img-placeholder"></div>
-    `;
+    // select available question cards
+    for (
+      let i = 0;
+      i < questionCards.length || this._selectedQuestionNumber == null;
+      i++
+    ) {
+      let card = questionCards[i];
+      let questionCardNumber = Number(card.querySelector(".title").textContent);
 
-    timerArea.innerHTML = `
-      <div class="timer-icon-container">
-        <div class="timer-icon-placeholder"></div>
-      </div>
-      <div class="progress-container">
-        <progress
-          class="nes-progress is-custom"
-          value="100"
-          max="100"
-        ></progress>
-      </div>
-    `;
+      if (
+        !this._solved.includes(questionCardNumber) &&
+        this._selectedQuestionNumber == null
+      ) {
+        this._selectedQuestionNumber = questionCardNumber;
+        document.querySelector("#cell-number").innerHTML = String(
+          this._selectedQuestionNumber
+        );
+        card.classList.add("active");
+        // scrollIntoView
+        card.scrollIntoView(false);
+      }
+    }
 
-    this._headerContElement.appendChild(levelIndicatorArea);
-    this._headerContElement.appendChild(timerArea);
+    // event handling
+    questionCards.forEach((card) => {
+      card.addEventListener("click", (e: any) => {
+        if (!e.target.classList.contains("active")) {
+          if (e.target.classList.contains("cleared")) {
+            // TODO play null sound
+            return null;
+          } else {
+            // remove previous active element
+            document
+              .querySelector(".question-card.active")
+              .classList.remove("active");
 
+            // new active element
+            e.target.classList.add("active");
+
+            // change indicated selected number in input label
+            // TODO check if main var from classes does change
+            this._selectedQuestionNumber = Number(
+              e.target.querySelector(".title").textContent
+            );
+
+            document.querySelector("#cell-number").innerHTML = String(
+              this._selectedQuestionNumber
+            );
+          }
+        }
+      });
+    });
+  }
+
+  private bindSubmitEvents() {
+    const submitEventHandler = (e: any) => {
+      let textInputContainer = <HTMLInputElement>(
+        document.querySelector("#guess-text")
+      );
+      let textInput = textInputContainer.value.trim();
+
+      if (
+        textInput != this._wordsToSolve[this._selectedQuestionNumber - 1] ||
+        textInput === "" ||
+        textInput == null
+      ) {
+        // show failed input animation
+        textInputContainer.classList.add("is-error");
+        setTimeout(() => {
+          textInputContainer.classList.remove("is-error");
+          textInputContainer.value = "";
+        }, 200);
+      } else if (
+        textInput == this._wordsToSolve[this._selectedQuestionNumber - 1]
+      ) {
+        // show successful input animation
+        textInputContainer.classList.add("is-success");
+        setTimeout(() => {
+          textInputContainer.classList.remove("is-success");
+          textInputContainer.value = "";
+        }, 400);
+
+        // set question card as cleared
+        let activeQuestionCard = document.querySelector(
+          ".question-card.active"
+        );
+        activeQuestionCard.classList.add("cleared");
+        activeQuestionCard
+          .querySelector("a.nes-btn")
+          .classList.add("is-disabled");
+        activeQuestionCard.insertAdjacentHTML(
+          "beforeend",
+          `
+          <div class="cleared-indicator-area">
+            <div class="cleared-img-placeholder"></div>
+          </div> 
+        `
+        );
+        activeQuestionCard.classList.remove("active");
+
+        // show answer to the table and save data
+        this._data.forEach((obj: any) => {
+          // TODO create a structure for this object
+          if (obj.qnum == this._selectedQuestionNumber) {
+            obj.occupied.forEach((cellNumber: any) => {
+              let blocksArray =
+                this._crosswordLogic.getBlocksAtCellNumber(cellNumber);
+              if (blocksArray.length == 1) {
+                let letter = blocksArray[0].querySelector(
+                  "span:nth-of-type(1)"
+                );
+                letter == null
+                  ? (blocksArray[0].querySelector("span").style.transform =
+                      "scale(1)")
+                  : (letter.style.transform = "scale(1)");
+              } else if (blocksArray.length == 2) {
+                blocksArray[0].querySelector("span").style.transform =
+                  "scale(1)";
+                blocksArray[1].querySelector("span").style.transform =
+                  "scale(1)";
+              }
+            });
+          }
+        });
+        this._solved.push(this._selectedQuestionNumber);
+
+        // select the next question
+        this._selectedQuestionNumber = null;
+        this.bindQuestionCardEvents();
+      }
+    };
+
+    document
+      .querySelector("#enter-btn")
+      .addEventListener("click", submitEventHandler);
+
+    document.addEventListener("keydown", (e) => {
+      if (e.repeat) {
+        return;
+      }
+
+      if (e.key === "Enter") {
+        submitEventHandler(e);
+      }
+    });
+  }
+
+  private startTimer(): any {
+    return setInterval(() => {
+      if (this._timer.value == 0) {
+        // TODO show game over screen
+        console.log("Game Ended");
+        clearInterval(timerInterval);
+      } else if (this._timer.value > 0 && this._timer.value <= 10) {
+        // TODO change music here
+        this._timer.classList.remove("is-warning");
+        this._timer.classList.add("is-error");
+      } else if (this._timer.value > 10 && this._timer.value <= 30) {
+        this._timer.classList.add("is-warning");
+      }
+
+      this._timer.value -= 1;
+    }, 6000);
+  }
+
+  public start(state: GameState): void {
+    // for now set the game default: level 1
+    this._state = state;
+
+    //display the selected level
+    this._inGameView.display();
+    this._cont = this._inGameView.getCrosswordContainerElement();
+
+    // set the cells and timer after rendering
     this._timer = document.querySelector(
       ".progress-container > progress.nes-progress"
     );
-  }
-
-  private generateTable(): string {
-    let htmlString = `<div class="cell"></div>`;
-    let source = `\n<div class="cell"></div>`;
-    for (let i = 0; i < 255; i++) {
-      htmlString += source;
-    }
-
-    return htmlString;
-  }
-
-  private drawGameContent(): void {
-    let crosswordCont = document.createElement("section");
-    let questionsCont = document.createElement("section");
-
-    this._gameContElement.setAttribute("id", "game-content-container-ig");
-    crosswordCont.setAttribute("id", "crossword-container");
-    questionsCont.setAttribute("id", "questions-container");
-
-    let tableCont = document.createElement("div");
-    let _cont = document.createElement("div");
-    tableCont.setAttribute("id", "table-container");
-    _cont.setAttribute("id", "_cont");
-    // generate table
-    _cont.innerHTML = this.generateTable();
-
-    // set the container property
-    this._container = _cont;
-    tableCont.appendChild(this._container);
-
-    let inputCont = document.createElement("div");
-    inputCont.setAttribute("id", "input-container");
-    inputCont.innerHTML = `
-      <!-- default number is the first question -->
-      <div id="cell-number">5</div>
-      <input
-        oninput="this.value = this.value.toUpperCase()"
-        type="text"
-        id="guess-text"
-        class="nes-input"
-      />
-      <a id="enter-btn" class="nes-btn nes-btn-custom" type="button">
-        Enter
-      </a>
-    `;
-
-    crosswordCont.appendChild(tableCont);
-    crosswordCont.appendChild(inputCont);
-
-    questionsCont.innerHTML = `
-      <div
-        class="across-questions-container nes-container is-rounded with-title"
-      >
-        <p class="title">Across</p>
-        <!-- ADD ACROSS QUESTIONS HERE-->
-        <!-- ADD "active" if question card is the selected one -->
-
-        <div
-          class="nes-container with-title is-centered question-card active"
-        >
-          <p class="title">5</p>
-          <p>The highest mountain top in the USA</p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">6</p>
-          <p>This man's name was given to the capital of the USA</p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">9</p>
-          <p>A neighboring country of the USA</p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">10</p>
-          <p>
-            A significant percentage of this natural phenomenon occurs in
-            the USA
-          </p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-        <!-- END ADDING ACROSS QUESTIONS HERE -->
-      </div>
-      <div
-        class="down-questions-container nes-container is-rounded with-title"
-      >
-        <p class="title">Down</p>
-        <!-- ADD DOWN QUESTIONS HERE-->
-
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">1</p>
-          <p>The largest state(area) in the USA</p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-
-        <!-- if cleared, add "cleared" to styling -->
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">2</p>
-          <p>The number of stars on the US flag</p>
-          <!-- if cleared, add "is-disabled" to styling -->
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-          <!-- if cleared, add indicator html code -->
-        </div>
-
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">3</p>
-          <p>The oldest national park in the world</p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">4</p>
-          <p>The national bird of the USA</p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">7</p>
-          <p>The most famous waterfall in North America</p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-
-        <div class="nes-container with-title is-centered question-card">
-          <p class="title">8</p>
-          <p>Third most populated city in the USA</p>
-          <a class="nes-btn nes-btn-custom" type="button">Hint</a>
-        </div>
-        <!-- END ADDING DOWN QUESTIONS HERE -->
-      </div>
-    `;
-
-    // append to parent both the crossword and questions
-    this._gameContElement.appendChild(crosswordCont);
-    this._gameContElement.appendChild(questionsCont);
-
-    // append to FRAME
-    FRAME.appendChild(this._gameContElement);
-
-    // find the after rendering
     this._cells = <any>document.querySelectorAll(".cell");
-  }
+    this._cells.forEach((cell) => (cell.style.opacity = "0"));
 
-  public start(): void {
-    this.drawRestOfHeaderArea();
-    this.drawGameContent();
+    // set the words to solve
+    this.placeWord("ALASKA", 1, "vertical", 18.75, 0);
+    this.placeWord("YELLOWSTONE", 3, "vertical", 37.5, 6.25);
+    this.placeWord("FIFTY", 2, "vertical", 50, 0);
+    this.placeWord("BALDEAGLE", 4, "vertical", 62.5, 6.25);
+    this.placeWord("CHICAGO", 8, "vertical", 50, 56.25);
+    this.placeWord("MCKINLEY", 5, "horizontal", 6.25, 25);
+    this.placeWord("WASHINGTON", 6, "horizontal", 25, 43.75);
+    this.placeWord("NIAGARA", 7, "vertical", 81.25, 43.75);
+    this.placeWord("MEXICO", 9, "horizontal", 31.25, 68.75);
+    this.placeWord("TORNADO", 10, "horizontal", 25, 81.25);
+
+    // start timer
+    this._timerInterval = this.startTimer();
+
+    // bind return event
+    this._inGameView.bindReturnEvent(state, this._timerInterval);
+
+    // bind question card event handling
+    this.bindQuestionCardEvents();
+
+    // bind submit event handling
+    this.bindSubmitEvents();
+
+    // TODO hint event handling
+    let hintButtons = document.querySelectorAll(
+      ".question-card > a.nes-btn-custom"
+    );
+
+    hintButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        console.log(e.target);
+      });
+    });
   }
 }
