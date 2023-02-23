@@ -1,3 +1,4 @@
+// import CSS files
 import "nes.css/css/nes.min.css";
 import "./assets/styles/loading.scss";
 import "./assets/styles/buffer.css";
@@ -7,11 +8,14 @@ import "./assets/styles/main.css";
 import "./assets/styles/game-menu.css";
 import "./assets/styles/level-selection.css";
 
-import { GameState } from "./app/state";
-import { GameView } from "./app/screen";
+// import TS files
+import { GameDisplay } from "./app/GameDisplay";
+import { GameStateManager } from "./app/GameStateManager";
+import { GameManager } from "./app/GameManager";
 
-const _view: GameView = new GameView();
-const _context: GameState = new GameState();
+const _gameDisplay: GameDisplay = new GameDisplay();
+const _gameStateManager: GameStateManager = new GameStateManager();
+const _gameManager: GameManager = new GameManager();
 
 window.onload = init;
 
@@ -20,7 +24,7 @@ function init() {
 }
 
 function gameLoop() {
-  _view.display(_context);
+  _gameDisplay.load(_gameStateManager, _gameManager);
 
   window.requestAnimationFrame(gameLoop);
 }

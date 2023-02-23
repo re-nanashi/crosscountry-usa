@@ -67,3 +67,7 @@
   width: 80%;
   padding-top: 104.39%;
 }
+
+a.nes-btn.is-disabled:active {
+  animation: shake 0.5s;
+}

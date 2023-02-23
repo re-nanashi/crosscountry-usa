@@ -93,6 +93,10 @@ body {
   flex-direction: column;
 }
 
+#frame-container.hidden {
+  display: none;
+}
+
 /* UTILITY CLASSES */
 /* NES BUTTON CUSTOM STYLING */
 .nes-btn-custom {
@@ -179,6 +183,24 @@ body {
   }
   100% {
     transform: translateY(0%);
+  }
+}
+
+@keyframes slidedown-2 {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(60%);
+  }
+}
+
+@keyframes slideup {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-60%);
   }
 }
 

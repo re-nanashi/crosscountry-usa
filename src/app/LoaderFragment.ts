@@ -1,15 +1,15 @@
 import { FRAME } from "../globals";
 
-export class Loader {
-  private _loaderEle: HTMLDivElement;
+export class LoaderFragment {
+  private _loaderContainerDiv: HTMLDivElement;
 
   constructor() {
-    this._loaderEle = document.createElement("div");
+    this._loaderContainerDiv = document.createElement("div");
   }
 
-  private renderLoadingScreen(): void {
-    this._loaderEle.classList.add("c-loader");
-    this._loaderEle.innerHTML = `
+  private createLoaderFragment(): void {
+    this._loaderContainerDiv.classList.add("c-loader");
+    this._loaderContainerDiv.innerHTML = `
       <div class="c-loader__title">
         <div class="c-loader__state c-loader__state--progress">
           Now Loading
@@ -38,13 +38,20 @@ export class Loader {
     `;
   }
 
-  public displayLoader(): void {
-    this.renderLoadingScreen();
-    FRAME.append(this._loaderEle);
-    this._loaderEle.classList.add("is--started");
+  public display(playLoadComplete: Function): void {
+    const displayDuration: number = 4000;
+
+    this.createLoaderFragment();
+    FRAME.appendChild(this._loaderContainerDiv);
+    this._loaderContainerDiv.classList.add("is--started");
 
     setTimeout(() => {
-      this._loaderEle.remove();
-    }, 4000);
+      playLoadComplete();
+    }, 2800);
+
+    // remove fragment after display duration
+    setTimeout(() => {
+      this._loaderContainerDiv.remove();
+    }, displayDuration);
   }
 }

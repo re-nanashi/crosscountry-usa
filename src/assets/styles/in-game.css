@@ -10,6 +10,10 @@
   animation: slidedown 1s ease-out;
 }
 
+#game-header-container .level-indicator-area.exit {
+  animation: slideup 0.3s ease-out !important;
+}
+
 .level-indicator-area .level-star-img-placeholder {
   /* Change img for level indication */
   background-image: url("../img/level-1.png");
@@ -29,6 +33,10 @@
   justify-content: center;
   padding-left: 10%;
   animation: slidedown 1s ease-out;
+}
+
+#game-header-container .timer-area.exit {
+  animation: slideup 0.3s ease-out !important;
 }
 
 .timer-area .timer-icon-container {
@@ -61,6 +69,10 @@
   padding: 1% 2% 2% 2%;
 }
 
+#game-content-container-ig.hidden {
+  display: none !important;
+}
+
 /* CROSSWORD TABLE*/
 #crossword-container {
   width: 57.7%;
@@ -76,6 +88,11 @@
   height: 88%;
   display: flex;
   justify-content: center;
+  animation: mslideLeft-rev 0.6s ease-in, fadeIn 0.6s;
+}
+
+#crossword-container #table-container.exit {
+  animation: mslideLeft 0.2s ease-out, fadeOut 0.2s !important;
 }
 
 #table-container #_cont {
@@ -131,6 +148,11 @@
   flex-direction: row;
   align-items: center;
   gap: 2%;
+  animation: mslideUp 0.6s ease-in, fadeIn 0.6s;
+}
+
+#crossword-container #input-container.exit {
+  animation: mslideDown 0.2s ease-out, fadeOut 0.2s !important;
 }
 
 #input-container > div.nes-container {
@@ -172,6 +194,11 @@
   height: auto;
   overflow: scroll;
   scrollbar-width: none;
+  animation: mslideRight-rev 0.6s ease-in, fadeIn 0.6s;
+}
+
+#questions-container.exit {
+  animation: mslideRight 0.2s ease-out, fadeOut 0.2s !important;
 }
 
 #questions-container .across-questions-container,
@@ -243,6 +270,7 @@
   width: 100%;
   height: 0;
   padding-top: 100%;
+  pointer-events: none;
 }
 
 @keyframes shake {
@@ -280,3 +308,35 @@
     transform: translate(1px, -2px) rotate(-1deg);
   }
 }
+
+/* Exit confirm */
+#in-game-modal {
+  width: 60%;
+  height: fit-content;
+  max-height: 75%;
+  background-color: #fff;
+  padding: 2vw 2.5vw !important;
+  animation: mslideUp 0.2s ease-out, fadeIn 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9vw;
+  justify-content: center;
+  font-size: 1vw !important;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#in-game-modal > span.nes-text {
+  font-size: 1.5vw !important;
+  margin-bottom: 1vw;
+}
+
+/*
+#in-game-modal > div {
+  margin-bottom: 1vw;
+}
+*/

@@ -20,6 +20,10 @@ module.exports = {
         use: ["html-loader"],
       },
       {
+        test: /\.mp3$/,
+        use: "file-loader",
+      },
+      {
         test: /\.(sa|sc|c)ss$/,
         use: [
           MiniCssExtractPlugin.loader,
