@@ -164,6 +164,7 @@ export class GameManager {
         if (!e.target.classList.contains("active")) {
           if (e.target.classList.contains("cleared")) {
             // TODO play null sound
+            this._soundManager.playDisabled();
             return null;
           } else {
             // remove previous active element

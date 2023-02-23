@@ -53,6 +53,7 @@ export class SoundManager {
   }
 
   playLoadComplete = () => {
+    this._loadComplete.volume = 0.2;
     this._loadComplete.play();
   };
 
