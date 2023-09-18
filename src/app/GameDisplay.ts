@@ -114,7 +114,7 @@ export class SoundManager {
     allBtns.forEach((button) => {
       button.addEventListener("mouseenter", () => {
         // if sound is on
-        console.log("Soundbtn hovered");
+        // console.log("Soundbtn hovered");
       });
     });
 
